@@ -1,7 +1,7 @@
 import axios from '../axios/axios';
 
 export const searchAPI = {
-  _maxResults: 12,
+  _maxResults: 30,
   _path: null,
   _apiKey: 'AIzaSyDXbi_V9D4X9YomgHICX8rc2B1wPI97csI',
 

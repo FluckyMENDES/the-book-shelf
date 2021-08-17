@@ -2,13 +2,30 @@
   display: flex;
   padding: 5rem 0;
 
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+
   & > div {
     width: 50%;
+
+    @media screen and (max-width: 767px) {
+      width: auto;
+    }
+
+    &:first-child {
+      margin-bottom: 20px;
+      text-align: center;
+    }
   }
 
   & img {
     max-width: 75%;
     object-fit: contain;
+
+    @media screen and (max-width: 767px) {
+      max-height: 300px;
+    }
   }
 }
 

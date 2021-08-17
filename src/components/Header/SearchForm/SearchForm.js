@@ -9,6 +9,7 @@ import {
 } from '../../../store/actions/search';
 import SearchInput from './SearchInput/SearchInput';
 import { useHistory } from 'react-router-dom';
+import Select from '../../UI/Select/Select';
 
 const SearchForm = ({
   searchString,
@@ -42,27 +43,33 @@ const SearchForm = ({
   return (
     <form className={classes.SearchForm} onSubmit={onFormSubmit}>
       <SearchInput value={searchString} onChange={onSearchInputChange} />
-      <div>
-        <label>
-          Category
-          <select value={category} onChange={onChangeCategory}>
-            <option value="all">all</option>
-            <option value="art">art</option>
-            <option value="biography">biography</option>
-            <option value="computers">computers</option>
-            <option value="history">history</option>
-            <option value="medical">medical</option>
-            <option value="poetry">poetry</option>
-          </select>
-        </label>
-
-        <label>
-          Sorting
-          <select value={sorting} onChange={onChangeSorting}>
-            <option value="relevance">relevance</option>
-            <option value="newest">newest</option>
-          </select>
-        </label>
+      <div className={classes.wrapper}>
+        <Select
+          label="category"
+          value={category}
+          onChange={onChangeCategory}
+          options={['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry']}
+        />
+        <Select
+          label="sorting by"
+          value={sorting}
+          onChange={onChangeSorting}
+          options={['relevance', 'newest']}
+        />
+        {/* <div>
+          <label>
+            Category
+            <select value={category} onChange={onChangeCategory}>
+              <option value="all">all</option>
+              <option value="art">art</option>
+              <option value="biography">biography</option>
+              <option value="computers">computers</option>
+              <option value="history">history</option>
+              <option value="medical">medical</option>
+              <option value="poetry">poetry</option>
+            </select>
+          </label>
+        </div> */}
       </div>
     </form>
   );
