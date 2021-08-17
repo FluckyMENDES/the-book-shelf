@@ -2,10 +2,12 @@ import {
   CHANGE_SEARCH_SORTING,
   REQUEST_BOOK,
   REQUEST_BOOKS,
+  CHANGE_SEARCH_STRING,
   SEARCHING_BOOKS_IN_PROGRESS,
   SEARCHING_BOOK_IN_PROGRESS,
   SET_BOOK,
   SET_BOOKS,
+  SET_MORE_BOOKS,
 } from '../actionTypes';
 
 const initialState = {
@@ -13,10 +15,16 @@ const initialState = {
   books: [],
   book: {},
   sorting: 'relevance',
+  searchString: '',
 };
 
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_SEARCH_STRING:
+      return {
+        ...state,
+        searchString: action.payload,
+      };
     case REQUEST_BOOKS:
       return {
         ...state,
@@ -30,6 +38,11 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         books: [...action.payload],
+      };
+    case SET_MORE_BOOKS:
+      return {
+        ...state,
+        books: [...state.books, ...action.payload],
       };
     case REQUEST_BOOK:
       return {

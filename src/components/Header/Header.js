@@ -8,7 +8,7 @@ const Header = () => {
     <header className={classes.Header}>
       <div className="container">
         <Link to="/">
-          <h1>The Books shelf</h1>
+          <h1>The books shelf</h1>
         </Link>
         <SearchForm />
       </div>

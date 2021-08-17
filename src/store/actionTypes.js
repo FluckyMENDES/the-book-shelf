@@ -1,10 +1,13 @@
-// search
+// books
 export const REQUEST_BOOKS = 'REQUEST_BOOKS';
 export const SEARCHING_BOOKS_IN_PROGRESS = 'SEARCHING_BOOKS_IN_PROGRESS';
 export const SET_BOOKS = 'SET_BOOKS';
+export const SET_MORE_BOOKS = 'SET_MORE_BOOKS';
 
-// search
+// book
 export const REQUEST_BOOK = 'REQUEST_BOOK';
 export const SEARCHING_BOOK_IN_PROGRESS = 'SEARCHING_BOOK_IN_PROGRESS';
 export const SET_BOOK = 'SET_BOOK';
+
 export const CHANGE_SEARCH_SORTING = 'CHANGE_SEARCH_SORTING';
+export const CHANGE_SEARCH_STRING = 'CHANGE_SEARCH_STRING';

@@ -10,9 +10,10 @@ const SearchInput = ({ value, onChange }) => {
       <div className={classes.wrapper}>
         <input
           id="search-book-input"
+          required
+          placeholder="Alice's Adventures in Wonderland"
           value={value}
           onChange={onChange}
-          placeholder="Alice's Adventures in Wonderland"
         />
 
         <button type="submit">

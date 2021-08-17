@@ -4,8 +4,6 @@ import classes from './BookItem.module.scss';
 import BookIcon from './../../../assets/img/book.svg';
 
 const BookItem = (props) => {
-  console.log(props);
-
   return (
     <li className={classes.BookItem}>
       <figure>
