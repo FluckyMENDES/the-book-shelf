@@ -1,2 +1,6 @@
 .BookList {
+  display: grid;
+  padding: 5rem 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
 }
