@@ -1,9 +1,10 @@
 import './App.css';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
     <div className="App">
-      <h1>Books shelf</h1>
+      <Layout>content</Layout>
     </div>
   );
 }
