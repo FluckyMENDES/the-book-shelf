@@ -1,4 +1,5 @@
 import {
+  CHANGE_SEARCH_SORTING,
   REQUEST_BOOK,
   REQUEST_BOOKS,
   SEARCHING_BOOKS_IN_PROGRESS,
@@ -11,6 +12,7 @@ const initialState = {
   isLoading: false,
   books: [],
   book: {},
+  sorting: 'relevance',
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -43,6 +45,12 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         book: action.payload,
       };
+    case CHANGE_SEARCH_SORTING: {
+      return {
+        ...state,
+        sorting: action.payload,
+      };
+    }
     default:
       return {
         ...state,

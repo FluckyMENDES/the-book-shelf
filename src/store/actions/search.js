@@ -1,4 +1,5 @@
 import {
+  CHANGE_SEARCH_SORTING,
   REQUEST_BOOK,
   REQUEST_BOOKS,
   SEARCHING_BOOKS_IN_PROGRESS,
@@ -29,4 +30,9 @@ export const requestBook = (id) => ({
 export const setBook = (book) => ({
   type: SET_BOOK,
   payload: book,
+});
+
+export const changeSearchSorting = (value) => ({
+  type: CHANGE_SEARCH_SORTING,
+  payload: value,
 });

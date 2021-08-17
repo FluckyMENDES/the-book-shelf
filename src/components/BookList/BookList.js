@@ -5,7 +5,8 @@ import Preloader from './../UI/Preloader/Preloader';
 import BookItem from './BookItem/BookItem';
 
 const BookList = ({ books, isLoading }) => {
-  const renderItems = (items) => items.map((props) => <BookItem {...props} key={props.id} />);
+  const renderItems = (items) =>
+    items.map((item, index) => <BookItem {...item} key={`${item.id}-${index}`} />);
 
   if (isLoading) return <Preloader />;
 
