@@ -1,5 +1,5 @@
 import { searchAPI } from '../../api/search';
-import { setBooks, toggleSearchingInProgress } from '../actions/search';
+import { setBook, setBooks, toggleSearchingInProgress } from '../actions/search';
 
 export const getBooks = (searchString) => (dispatch) => {
   dispatch(toggleSearchingInProgress(true));
@@ -8,6 +8,19 @@ export const getBooks = (searchString) => (dispatch) => {
     .then((response) => {
       const books = response.data.items;
       dispatch(setBooks(books));
+    })
+    .finally(() => {
+      dispatch(toggleSearchingInProgress(false));
+    });
+};
+
+export const getBook = (id) => (dispatch) => {
+  dispatch(toggleSearchingInProgress(true));
+  searchAPI
+    .requestBook(id)
+    .then((response) => {
+      const book = response.data;
+      dispatch(setBook(book));
     })
     .finally(() => {
       dispatch(toggleSearchingInProgress(false));

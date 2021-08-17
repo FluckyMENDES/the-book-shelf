@@ -1,8 +1,16 @@
-import { REQUEST_BOOKS, SEARCHING_BOOKS_IN_PROGRESS, SET_BOOKS } from '../actionTypes';
+import {
+  REQUEST_BOOK,
+  REQUEST_BOOKS,
+  SEARCHING_BOOKS_IN_PROGRESS,
+  SEARCHING_BOOK_IN_PROGRESS,
+  SET_BOOK,
+  SET_BOOKS,
+} from '../actionTypes';
 
 const initialState = {
   isLoading: false,
   books: [],
+  book: {},
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -20,6 +28,20 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         books: [...action.payload],
+      };
+    case REQUEST_BOOK:
+      return {
+        ...state,
+      };
+    case SEARCHING_BOOK_IN_PROGRESS:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case SET_BOOK:
+      return {
+        ...state,
+        book: action.payload,
       };
     default:
       return {

@@ -7,9 +7,7 @@ import BookItem from './BookItem/BookItem';
 const BookList = ({ books, isLoading }) => {
   const renderItems = (items) => items.map((props) => <BookItem {...props} key={props.id} />);
 
-  if (isLoading) {
-    return <Preloader />;
-  }
+  if (isLoading) return <Preloader />;
 
   return <ul className={classes.BookList}>{renderItems(books)}</ul>;
 };

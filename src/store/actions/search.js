@@ -1,4 +1,10 @@
-import { REQUEST_BOOKS, SEARCHING_BOOKS_IN_PROGRESS, SET_BOOKS } from '../actionTypes';
+import {
+  REQUEST_BOOK,
+  REQUEST_BOOKS,
+  SEARCHING_BOOKS_IN_PROGRESS,
+  SET_BOOK,
+  SET_BOOKS,
+} from '../actionTypes';
 
 export const requestBooks = (bookTitle) => ({
   type: REQUEST_BOOKS,
@@ -13,4 +19,14 @@ export const setBooks = (books) => ({
 export const toggleSearchingInProgress = (isSearchingInProgress) => ({
   type: SEARCHING_BOOKS_IN_PROGRESS,
   payload: isSearchingInProgress,
+});
+
+export const requestBook = (id) => ({
+  type: REQUEST_BOOK,
+  payload: id,
+});
+
+export const setBook = (book) => ({
+  type: SET_BOOK,
+  payload: book,
 });
