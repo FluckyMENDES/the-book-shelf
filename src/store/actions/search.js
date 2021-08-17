@@ -1,4 +1,5 @@
 import {
+  CHANGE_SEARCH_CATEGORY,
   CHANGE_SEARCH_SORTING,
   CHANGE_SEARCH_STRING,
   REQUEST_BOOK,
@@ -46,5 +47,10 @@ export const setBook = (book) => ({
 
 export const changeSearchSorting = (value) => ({
   type: CHANGE_SEARCH_SORTING,
+  payload: value,
+});
+
+export const changeSearchCategory = (value) => ({
+  type: CHANGE_SEARCH_CATEGORY,
   payload: value,
 });

@@ -8,6 +8,7 @@ import {
   SET_BOOK,
   SET_BOOKS,
   SET_MORE_BOOKS,
+  CHANGE_SEARCH_CATEGORY,
 } from '../actionTypes';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   books: [],
   book: {},
   sorting: 'relevance',
+  category: 'all',
   searchString: '',
 };
 
@@ -25,6 +27,18 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         searchString: action.payload,
       };
+    case CHANGE_SEARCH_SORTING: {
+      return {
+        ...state,
+        sorting: action.payload,
+      };
+    }
+    case CHANGE_SEARCH_CATEGORY: {
+      return {
+        ...state,
+        category: action.payload,
+      };
+    }
     case REQUEST_BOOKS:
       return {
         ...state,
@@ -58,12 +72,7 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         book: action.payload,
       };
-    case CHANGE_SEARCH_SORTING: {
-      return {
-        ...state,
-        sorting: action.payload,
-      };
-    }
+
     default:
       return {
         ...state,

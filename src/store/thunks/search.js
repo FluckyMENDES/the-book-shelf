@@ -1,11 +1,11 @@
 import { searchAPI } from '../../api/search';
 import { setBook, setBooks, setMoreBooks, toggleSearchingInProgress } from '../actions/search';
 
-export const getBooks = (searchString, sorting) => (dispatch) => {
+export const getBooks = (searchString, sorting, category) => (dispatch) => {
   dispatch(toggleSearchingInProgress(true));
   dispatch(setBooks([]));
   searchAPI
-    .requestBooks({ searchString, sorting })
+    .requestBooks({ searchString, sorting, category })
     .then((response) => {
       const books = response.data.items;
       dispatch(setBooks(books));

@@ -15,7 +15,8 @@ const BookItem = (props) => {
         </Link>
         <figcaption>{props.volumeInfo.title}</figcaption>
       </figure>
-      <span>{props.volumeInfo.authors?.join(' ') || 'Unknown author'}</span>
+      <span>{props.volumeInfo.categories[0]}</span>
+      <span>{props.volumeInfo?.authors?.join(' ') || 'Unknown author'}</span>
     </li>
   );
 };
