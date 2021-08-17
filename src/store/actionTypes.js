@@ -1,0 +1,4 @@
+// search
+export const REQUEST_BOOKS = 'REQUEST_BOOKS';
+export const SEARCHING_BOOKS_IN_PROGRESS = 'SEARCHING_BOOKS_IN_PROGRESS';
+export const SET_BOOKS = 'SET_BOOKS';

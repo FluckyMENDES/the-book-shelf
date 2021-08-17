@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Preloader.module.scss';
-import { ReactComponent as Icon } from './../../../assets/img/preloader.svg';
+import { ReactComponent as Icon } from '../../../assets/img/preloader.svg';
 
 const Preloader = ({ center = false }) => {
   const cls = [classes.Preloader];

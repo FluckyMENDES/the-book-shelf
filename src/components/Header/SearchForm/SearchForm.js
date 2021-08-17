@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import classes from './SearchForm.module.scss';
-import { searchBooks } from './../../../api/books';
+import { connect } from 'react-redux';
+import { getBooks } from './../../../store/thunks/search';
 
-const SearchForm = () => {
-  const [searchValue, setSearchValue] = useState(null);
+const SearchForm = ({ getBooks }) => {
+  const [searchValue, setSearchValue] = useState('');
   const onSearchInputChange = (e) => {
     setSearchValue(e.target.value);
   };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    searchBooks(searchValue);
+    getBooks(searchValue);
   };
 
   return (
@@ -50,4 +51,10 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+const mapStateToProps = (state) => {
+  return {
+    books: state.search.books,
+  };
+};
+
+export default connect(mapStateToProps, { getBooks })(SearchForm);

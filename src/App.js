@@ -1,10 +1,16 @@
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import BookList from './components/BookList/BookList';
 import Layout from './components/Layout/Layout';
 
 function App() {
   return (
     <div className="App">
-      <Layout>content</Layout>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={BookList} />
+        </Switch>
+      </Layout>
     </div>
   );
 }
