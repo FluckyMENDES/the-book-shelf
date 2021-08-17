@@ -4,6 +4,7 @@ import classes from './BookPage.module.scss';
 import { getBook } from '../../store/thunks/search';
 import { useParams } from 'react-router-dom';
 import Preloader from '../../components/UI/Preloader/Preloader';
+import BookIcon from '../../assets/img/book.svg';
 
 const BookPage = ({ book, isLoading, getBook }) => {
   let { bookId } = useParams();
@@ -17,7 +18,7 @@ const BookPage = ({ book, isLoading, getBook }) => {
   return (
     <div className={classes.BookPage}>
       <div>
-        <img src={book.volumeInfo?.imageLinks.small} alt={book.volumeInfo?.title} />
+        <img src={book.volumeInfo?.imageLinks?.medium || BookIcon} alt={book.volumeInfo?.title} />
       </div>
       <div>
         <span className={classes.categories}>{book.volumeInfo?.categories?.join(' / ')}</span>

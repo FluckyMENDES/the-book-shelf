@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './BookList.module.scss';
 import BookItem from './BookItem/BookItem';
 
-const BookList = ({ books, isLoading }) => {
+const BookList = ({ books }) => {
   const renderItems = (items) =>
     items.map((item, index) => <BookItem {...item} key={`${item.id}-${index}`} />);
 

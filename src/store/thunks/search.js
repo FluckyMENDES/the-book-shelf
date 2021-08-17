@@ -3,11 +3,11 @@ import { setBook, setBooks, setMoreBooks, toggleSearchingInProgress } from '../a
 
 export const getBooks = (searchString, sorting, category) => (dispatch) => {
   dispatch(toggleSearchingInProgress(true));
-  dispatch(setBooks([]));
+  dispatch(setBooks({ items: [] }));
   searchAPI
     .requestBooks({ searchString, sorting, category })
     .then((response) => {
-      const books = response.data.items;
+      const books = response.data;
       dispatch(setBooks(books));
     })
     .finally(() => {
@@ -20,7 +20,7 @@ export const getMoreBooks = (searchString, sorting, startIndex, isRetry) => (dis
   searchAPI
     .requestBooks({ searchString, sorting, startIndex, isRetry })
     .then((response) => {
-      const books = response.data.items;
+      const books = response.data;
       dispatch(setMoreBooks(books));
     })
     .finally(() => {

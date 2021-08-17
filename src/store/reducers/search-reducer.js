@@ -13,7 +13,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  books: [],
+  books: { items: [] },
   book: {},
   sorting: 'relevance',
   category: 'all',
@@ -51,12 +51,12 @@ const searchReducer = (state = initialState, action) => {
     case SET_BOOKS:
       return {
         ...state,
-        books: [...action.payload],
+        books: { ...action.payload },
       };
     case SET_MORE_BOOKS:
       return {
         ...state,
-        books: [...state.books, ...action.payload],
+        books: { ...state.books, items: [...state.books.items, ...action.payload.items] },
       };
     case REQUEST_BOOK:
       return {

@@ -25,9 +25,9 @@ export const setBooks = (books) => ({
   payload: books,
 });
 
-export const setMoreBooks = (bookTitle) => ({
+export const setMoreBooks = (books) => ({
   type: SET_MORE_BOOKS,
-  payload: bookTitle,
+  payload: books,
 });
 
 export const toggleSearchingInProgress = (isSearchingInProgress) => ({

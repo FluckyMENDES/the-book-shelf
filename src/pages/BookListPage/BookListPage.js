@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getMoreBooks } from '../../store/thunks/search';
 import Preloader from '../../components/UI/Preloader/Preloader';
 
-const BookListPage = ({ books, isLoading, searchString, getMoreBooks }) => {
+const BookListPage = ({ books, totalBooks, isLoading, searchString, getMoreBooks }) => {
   const onLoadMoreClick = () => {
     getMoreBooks(searchString, null, books.length + 1, true);
   };
@@ -14,13 +14,14 @@ const BookListPage = ({ books, isLoading, searchString, getMoreBooks }) => {
     <div className={classes.BookListPage}>
       <BookList books={books} />
       {isLoading && <Preloader />}
-      {books.length > 0 && <button onClick={onLoadMoreClick}>Load more</button>}
+      {books.length > 1 && <button onClick={onLoadMoreClick}>Load more</button>}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  books: state.search.books,
+  books: state.search.books.items,
+  totalBooks: state.search.books.totalItems,
   isLoading: state.search.isLoading,
   searchString: state.search.searchString,
 });

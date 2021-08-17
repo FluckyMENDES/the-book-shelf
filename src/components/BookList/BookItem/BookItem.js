@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom';
 import classes from './BookItem.module.scss';
 import BookIcon from './../../../assets/img/book.svg';
 
-const BookItem = (props) => {
+const BookItem = ({ id, volumeInfo: { title, categories, authors, imageLinks } }) => {
   return (
     <li className={classes.BookItem}>
       <figure>
-        <Link to={`/books/${props.id}`}>
-          <img
-            src={props.volumeInfo.imageLinks?.smallThumbnail || BookIcon}
-            alt={props.volumeInfo.title}
-          />
+        <Link to={`/books/${id}`}>
+          <img src={imageLinks?.smallThumbnail || BookIcon} alt={title} />
         </Link>
-        <figcaption>{props.volumeInfo.title}</figcaption>
+        <figcaption>{title}</figcaption>
       </figure>
-      <span>{props.volumeInfo.categories[0]}</span>
-      <span>{props.volumeInfo?.authors?.join(' ') || 'Unknown author'}</span>
+      <span>{categories ? categories[0] : ''}</span>
+      <span>{authors?.join(' ') || 'Unknown author'}</span>
     </li>
   );
 };
