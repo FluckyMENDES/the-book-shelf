@@ -1,0 +1,63 @@
+.SearchInput {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+
+  & label {
+    display: block;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+  }
+
+  & input {
+    display: block;
+    padding: 0.5em 0.75em;
+    border-radius: 0.25em;
+    border: 3px solid var(--color-gray-700);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--color-primary);
+    }
+
+    &:active {
+      border-color: var(--color-primary-dark);
+    }
+  }
+
+  & button[type='submit'] {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    height: calc(100% - 3px * 2);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    & svg {
+      fill: var(--color-gray-700);
+      transition: fill 0.15s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      & svg {
+        fill: var(--color-primary);
+      }
+    }
+
+    &:active {
+      & svg {
+        fill: var(--color-primary-dark);
+      }
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classes from './SearchForm.module.scss';
 import { connect } from 'react-redux';
 import { getBooks } from './../../../store/thunks/search';
+import SearchInput from './SearchInput/SearchInput';
 
 const SearchForm = ({ getBooks }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -16,15 +17,7 @@ const SearchForm = ({ getBooks }) => {
 
   return (
     <form className={classes.SearchForm} onSubmit={onFormSubmit}>
-      <label>
-        Title
-        <input
-          value={searchValue}
-          onChange={onSearchInputChange}
-          type="search"
-          placeholder="Alice's Adventures in Wonderland"
-        />
-      </label>
+      <SearchInput value={searchValue} onChange={onSearchInputChange} />
       {/* <div>
         <label>
           Category
