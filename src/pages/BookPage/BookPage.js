@@ -5,8 +5,9 @@ import { getBook } from '../../store/thunks/search';
 import { useParams } from 'react-router-dom';
 import Preloader from '../../components/UI/Preloader/Preloader';
 import BookIcon from '../../assets/img/book.svg';
+import Error from '../../components/UI/Error/Error';
 
-const BookPage = ({ book, isLoading, getBook }) => {
+const BookPage = ({ book, isLoading, getBook, error }) => {
   let { bookId } = useParams();
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const BookPage = ({ book, isLoading, getBook }) => {
   }, [getBook, bookId]);
 
   if (isLoading) return <Preloader />;
+  if (error) return <Error message={error} />;
 
   return (
     <div className={classes.BookPage}>
@@ -34,6 +36,7 @@ const BookPage = ({ book, isLoading, getBook }) => {
 const mapStateToProps = (state) => ({
   book: state.search.book,
   isLoading: state.search.isLoading,
+  error: state.search.error,
 });
 
 export default connect(mapStateToProps, { getBook })(BookPage);

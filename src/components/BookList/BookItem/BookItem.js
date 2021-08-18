@@ -12,7 +12,7 @@ const BookItem = ({ id, volumeInfo: { title, categories, authors, imageLinks } }
         </Link>
         <figcaption>{title}</figcaption>
       </figure>
-      <span>{categories ? categories[0] : ''}</span>
+      <span className={classes.category}>{categories ? categories[0] : ''}</span>
       <span>{authors?.join(' ') || 'Unknown author'}</span>
     </li>
   );

@@ -1,42 +1,55 @@
 import { searchAPI } from '../../api/search';
-import { setBook, setBooks, setMoreBooks, toggleSearchingInProgress } from '../actions/search';
+import {
+  setBook,
+  setBooks,
+  setError,
+  setMoreBooks,
+  toggleSearchingInProgress,
+} from '../actions/search';
 
-export const getBooks = (searchString, sorting, category) => (dispatch) => {
-  dispatch(toggleSearchingInProgress(true));
-  dispatch(setBooks({ items: [] }));
-  searchAPI
-    .requestBooks({ searchString, sorting, category })
-    .then((response) => {
+export const getBooks =
+  ({ searchString, sorting, category }) =>
+  async (dispatch) => {
+    dispatch(toggleSearchingInProgress(true));
+    dispatch(setError(null));
+    try {
+      dispatch(setBooks({ items: [] }));
+      const response = await searchAPI.requestBooks({ searchString, sorting, category });
       const books = response.data;
       dispatch(setBooks(books));
-    })
-    .finally(() => {
-      dispatch(toggleSearchingInProgress(false));
-    });
+    } catch (error) {
+      dispatch(setError('Ooops. Something went wrong... Please try later.'));
+    }
+
+    dispatch(toggleSearchingInProgress(false));
+  };
+
+export const getMoreBooks = (searchString, sorting, startIndex, isRetry) => async (dispatch) => {
+  dispatch(toggleSearchingInProgress(true));
+  dispatch(setError(null));
+
+  try {
+    const response = await searchAPI.requestBooks({ searchString, sorting, startIndex, isRetry });
+
+    const books = response.data;
+    dispatch(setMoreBooks(books));
+  } catch (error) {
+    dispatch(setError('Ooops. Something went wrong... Please try later.'));
+  }
+  dispatch(toggleSearchingInProgress(false));
 };
 
-export const getMoreBooks = (searchString, sorting, startIndex, isRetry) => (dispatch) => {
+export const getBook = (id) => async (dispatch) => {
   dispatch(toggleSearchingInProgress(true));
-  searchAPI
-    .requestBooks({ searchString, sorting, startIndex, isRetry })
-    .then((response) => {
-      const books = response.data;
-      dispatch(setMoreBooks(books));
-    })
-    .finally(() => {
-      dispatch(toggleSearchingInProgress(false));
-    });
-};
+  dispatch(setError(null));
 
-export const getBook = (id) => (dispatch) => {
-  dispatch(toggleSearchingInProgress(true));
-  searchAPI
-    .requestBook(id)
-    .then((response) => {
-      const book = response.data;
-      dispatch(setBook(book));
-    })
-    .finally(() => {
-      dispatch(toggleSearchingInProgress(false));
-    });
+  try {
+    const response = await searchAPI.requestBook(id);
+
+    const book = response.data;
+    dispatch(setBook(book));
+  } catch (error) {
+    dispatch(setError('Ooops. Something went wrong... Please try later.'));
+  }
+  dispatch(toggleSearchingInProgress(false));
 };

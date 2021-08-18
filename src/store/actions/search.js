@@ -7,6 +7,7 @@ import {
   SEARCHING_BOOKS_IN_PROGRESS,
   SET_BOOK,
   SET_BOOKS,
+  SET_ERROR,
   SET_MORE_BOOKS,
 } from '../actionTypes';
 
@@ -53,4 +54,9 @@ export const changeSearchSorting = (value) => ({
 export const changeSearchCategory = (value) => ({
   type: CHANGE_SEARCH_CATEGORY,
   payload: value,
+});
+
+export const setError = (errorMessage) => ({
+  type: SET_ERROR,
+  payload: errorMessage,
 });

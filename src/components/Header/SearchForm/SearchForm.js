@@ -28,7 +28,7 @@ const SearchForm = ({
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    getBooks(searchString, sorting, category);
+    getBooks({ searchString, sorting, category });
     push('/');
   };
 
@@ -56,20 +56,6 @@ const SearchForm = ({
           onChange={onChangeSorting}
           options={['relevance', 'newest']}
         />
-        {/* <div>
-          <label>
-            Category
-            <select value={category} onChange={onChangeCategory}>
-              <option value="all">all</option>
-              <option value="art">art</option>
-              <option value="biography">biography</option>
-              <option value="computers">computers</option>
-              <option value="history">history</option>
-              <option value="medical">medical</option>
-              <option value="poetry">poetry</option>
-            </select>
-          </label>
-        </div> */}
       </div>
     </form>
   );

@@ -9,6 +9,7 @@ import {
   SET_BOOKS,
   SET_MORE_BOOKS,
   CHANGE_SEARCH_CATEGORY,
+  SET_ERROR,
 } from '../actionTypes';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   sorting: 'relevance',
   category: 'all',
   searchString: '',
+  error: null,
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -72,7 +74,11 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         book: action.payload,
       };
-
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return {
         ...state,
