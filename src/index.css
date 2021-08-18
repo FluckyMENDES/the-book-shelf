@@ -3,21 +3,12 @@
   --color-primary-light: #2a86ff;
   --color-primary-dark: #116adf;
   --color-white: #ffffff;
-  --color-gray-50: #f4f5f7;
-  --color-gray-100: #edeef0;
-  --color-gray-150: #e7e8ec;
   --color-gray-200: #dce1e6;
-  --color-gray-300: #c6cdd3;
-  --color-gray-400: #aeb7c2;
   --color-gray-500: #818c99;
   --color-gray-700: #333333;
   --color-black: #131313;
   --color-yellow: #ffffeb;
   --color-red: #dc3545;
-  --header-height: 4.8rem;
-  --blocks-gap: 1.5rem;
-  --blocks-borader-radius: 4px;
-  --box-shadow: 0 1px 0 0 var(--color-gray-200), 0 0 0 1px var(--color-gray-100);
 }
 
 * {
