@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import Preloader from '../../components/UI/Preloader/Preloader';
 import BookIcon from '../../assets/img/book.svg';
 import Error from '../../components/UI/Error/Error';
+import { bookSelector, errorSelector, isLoadingSelector } from '../../store/selectors/search';
 
 const BookPage = ({ book, isLoading, getBook, error }) => {
   let { bookId } = useParams();
@@ -34,9 +35,9 @@ const BookPage = ({ book, isLoading, getBook, error }) => {
 };
 
 const mapStateToProps = (state) => ({
-  book: state.search.book,
-  isLoading: state.search.isLoading,
-  error: state.search.error,
+  book: bookSelector(state),
+  isLoading: isLoadingSelector(state),
+  error: errorSelector(state),
 });
 
 export default connect(mapStateToProps, { getBook })(BookPage);

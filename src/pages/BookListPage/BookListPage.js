@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import { getMoreBooks } from '../../store/thunks/search';
 import Preloader from '../../components/UI/Preloader/Preloader';
 import Error from '../../components/UI/Error/Error';
+import {
+  booksSelector,
+  errorSelector,
+  isLoadingSelector,
+  searchStringSelector,
+} from '../../store/selectors/search';
 
 const BookListPage = ({ books, error, isLoading, searchString, getMoreBooks }) => {
   const onLoadMoreClick = () => {
@@ -22,10 +28,10 @@ const BookListPage = ({ books, error, isLoading, searchString, getMoreBooks }) =
 };
 
 const mapStateToProps = (state) => ({
-  books: state.search.books.items,
-  isLoading: state.search.isLoading,
-  searchString: state.search.searchString,
-  error: state.search.error,
+  books: booksSelector(state),
+  isLoading: isLoadingSelector(state),
+  searchString: searchStringSelector(state),
+  error: errorSelector(state),
 });
 
 export default connect(mapStateToProps, { getMoreBooks })(BookListPage);

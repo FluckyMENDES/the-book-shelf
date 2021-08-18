@@ -10,6 +10,12 @@ import {
 import SearchInput from './SearchInput/SearchInput';
 import { useHistory } from 'react-router-dom';
 import Select from '../../UI/Select/Select';
+import {
+  booksSelector,
+  categorySelector,
+  searchStringSelector,
+  sortingSelector,
+} from '../../../store/selectors/search';
 
 const SearchForm = ({
   searchString,
@@ -63,10 +69,10 @@ const SearchForm = ({
 
 const mapStateToProps = (state) => {
   return {
-    books: state.search.books,
-    sorting: state.search.sorting,
-    category: state.search.category,
-    searchString: state.search.searchString,
+    books: booksSelector(state),
+    sorting: sortingSelector(state),
+    category: categorySelector(state),
+    searchString: searchStringSelector(state),
   };
 };
 

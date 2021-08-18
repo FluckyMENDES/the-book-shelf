@@ -2,6 +2,10 @@
   padding: 2rem 1rem;
   background-color: var(--color-gray-700);
   color: var(--color-white);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('../../assets/img/books.jpg');
+  background-position: center center;
+  background-size: cover;
 
   & h1 {
     margin: 0 0 0.5em;
